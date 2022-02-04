@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ category.name|upper }}{% endblock %}
+
+{% block banner %}
+<div class="heading-page header-text">
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-content">
+                        <h4>Category:</h4>
+                        <h2>{{ category.name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block grid-style %}
+grid-system
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-8">
+            <div class="all-blog-posts">
+              <div class="row">
+                {% for post in page_obj %}
+                {% if post.is_active %}
+                <div class="col-lg-6">
+                  <div class="blog-post">
+                    <div class="blog-thumb">
+                      <img src="{% static 'images/blog-thumb-01.jpg' %}" alt="">
+                    </div>
+                    <div class="down-content">
+                      {% for category in post.category.all %}
+                        <a href="{% url 'category' category.id %}"><span>&nbsp;{{ category }}&nbsp;</span></a>
+                        {% endfor %}
+                      <a href="{% url 'post' post.id %}"><h4>{{ post }}</h4></a>
+                      <ul class="post-info">
+                        <li><a href="{% url 'author' post.author.id %}">{{ post.author }}</a></li>
+                        <li style="font-size: 14px;
+                                        color: #aaa;
+                                        font-weight: 400;
+                                        transition: all .3s;">
+                                {{ post.reg_date|date:"D d M Y" }}
+                            </li>
+                        <li><a href="#">12 Comments</a></li>
+                      </ul>
+                      <p>{{ post.text|safe|truncatechars:220 }}</p>
+                      <div class="post-options">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <ul class="post-tags">
+                              <li><i class="fa fa-tags"></i></li>
+                              <li><a href="#">Best Templates</a>,</li>
+                              <li><a href="#">TemplateMo</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="col-lg-12">
+                  <ul class="page-numbers">
+                      {% if page_obj.has_previous %}
+                        <li><a href="?page=1"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                      {% endif %}
+                        <li class="active">{{ page_obj.number }}</li>
+                      {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                        <li><a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right"></i></a></li>
+                      {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endblock %}
