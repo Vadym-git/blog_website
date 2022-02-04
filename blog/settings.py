@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['django_sk']
+ALLOWED_HOST = os.environ['allowed_host']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.0.124'
+    '192.168.0.124',
+    ALLOWED_HOST,
 ]
 
 INTERNAL_IPS = ALLOWED_HOSTS
