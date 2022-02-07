@@ -32,6 +32,7 @@ class Author(models.Model):
 class Post(models.Model):
     author = models.ForeignKey(Author, blank=False, null=True, on_delete=models.SET_NULL)
     header = models.CharField(verbose_name='Header', max_length=96, blank=False, null=False)
+    banner = models.ImageField(verbose_name='Picture', upload_to='posts-cover', blank=True, null=True)
     text = models.TextField(verbose_name='Post text')
     category = models.ManyToManyField(Categories)
     is_active = models.BooleanField(verbose_name='Is active', default=False)

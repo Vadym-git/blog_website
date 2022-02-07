@@ -135,7 +135,11 @@
                 <div class="blog-post">
                     <div class="blog-thumb">
                         <a href="{% url 'post' post.id %}">
-                            <img src="{% static 'images/blog-post-01.jpg' %}" alt="">
+                            {% if post.banner %}
+                            <img src="{{ post.banner.url }}" alt="{{ post.banner }}">
+                            {% else %}
+                            <img src="{% static 'images/design-software.png' %}" alt="post-banner">
+                            {% endif %}
                         </a>
                     </div>
                     <div class="down-content">

@@ -27,7 +27,11 @@
             <div class="col-lg-12">
                 <div class="blog-post">
                     <div class="blog-thumb">
-                        <img src="{% static 'images/blog-post-02.jpg' %}" alt="">
+                        {% if post.banner %}
+                            <img src="{{ post.banner.url }}" alt="{{ post.banner }}">
+                            {% else %}
+                            <img src="{% static 'images/design-software.png' %}" alt="post-banner">
+                            {% endif %}
                     </div>
                     <div class="down-content">
                         {% for category in post.category.all %}

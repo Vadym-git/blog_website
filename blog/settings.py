@@ -27,7 +27,6 @@ ALLOWED_HOST = os.environ['allowed_host']
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.0.124',
     ALLOWED_HOST,
 ]
 
@@ -125,6 +124,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'mediafiles/'))
+MEDIA_URL = 'media/'
+
+print(MEDIA_ROOT)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
