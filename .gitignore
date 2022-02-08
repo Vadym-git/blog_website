@@ -1,4 +1,4 @@
 .*
 !/.gitignore
 *.sqlite3
-/media
+/mediafiles

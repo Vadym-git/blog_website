@@ -18,7 +18,7 @@ class Categories(models.Model):
 
 class Author(models.Model):
     user = models.OneToOneField(User, blank=False, null=False, on_delete=models.CASCADE)
-    nickname = models.CharField(verbose_name='Nickname', max_length=8, blank=False, null=False)
+    nickname = models.CharField(verbose_name='Nickname', max_length=8, blank=False, null=False, unique=True)
     description = models.TextField(verbose_name='Author description', blank=True)
     reg_date = models.DateField(auto_now_add=True)
 
