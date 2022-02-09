@@ -5,18 +5,18 @@
 
 {% block banner %}
 <div class="heading-page header-text">
-<!--    <section class="page-heading">-->
-<!--        <div class="container">-->
-<!--            <div class="row">-->
-<!--                <div class="col-lg-12">-->
-<!--                    <div class="text-content">-->
-<!--                        <h4>Post Details</h4>-->
-<!--                        <h2>Single blog post</h2>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+    <!--    <section class="page-heading">-->
+    <!--        <div class="container">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-lg-12">-->
+    <!--                    <div class="text-content">-->
+    <!--                        <h4>Post Details</h4>-->
+    <!--                        <h2>Single blog post</h2>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
 </div>
 {% endblock %}
 
@@ -28,10 +28,10 @@
                 <div class="blog-post">
                     <div class="blog-thumb">
                         {% if post.banner %}
-                            <img src="{{ post.banner.url }}" alt="{{ post.banner }}">
-                            {% else %}
-                            <img src="{% static 'images/design-software.png' %}" alt="post-banner">
-                            {% endif %}
+                        <img src="{{ post.banner.url }}" alt="{{ post.banner }}">
+                        {% else %}
+                        <img src="{% static 'images/design-software.png' %}" alt="post-banner">
+                        {% endif %}
                     </div>
                     <div class="down-content">
                         {% for category in post.category.all %}
@@ -44,25 +44,19 @@
                                         color: #aaa;
                                         font-weight: 400;
                                         transition: all .3s;">
-                                {{ post.reg_date|date:"D d M Y" }}</li>
-                            <li><a href="#">0 Comments</a></li>
+                                {{ post.reg_date|date:"D d M Y" }}
+                            </li>
+<!--                            <li><a href="#">0 Comments</a></li>-->
                         </ul>
                         <p>{{ post.text|safe }}</p>
                         <div class="post-options">
                             <div class="row">
                                 <div class="col-6">
-                                    <ul class="post-tags">
-                                        <li><i class="fa fa-tags"></i></li>
-                                        <li><a href="#">Best Templates</a>,</li>
-                                        <li><a href="#">TemplateMo</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-6">
-                                    <ul class="post-share">
-                                        <li><i class="fa fa-share-alt"></i></li>
-                                        <li><a href="#">Facebook</a>,</li>
-                                        <li><a href="#"> Twitter</a></li>
-                                    </ul>
+                                    <div class="fb-share-button" data-href="{% url 'post' post.id %}"
+                                         data-layout="button_count" data-size="small"><a target="_blank"
+                                                                                         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                                                                         class="fb-xfbml-parse-ignore">Share</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

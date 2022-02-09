@@ -20,14 +20,12 @@ def author_view(request, author_id):
 
 def post_details(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    if not post.is_active:
-        raise Http404("Post does not exist")
     return render(request, 'post-details.html', context={'post': post})
 
 
 def category_view(request, category_id):
     category = get_object_or_404(Categories, pk=category_id)
-    posts = Post.objects.filter(category=category)
+    posts = Post.objects.filter(category=category).order_by('-reg_date')
     paginator = Paginator(posts, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

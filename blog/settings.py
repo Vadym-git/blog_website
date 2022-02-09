@@ -24,7 +24,7 @@ SECRET_KEY = os.environ['django_sk']
 ALLOWED_HOST = os.environ['allowed_host']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['django_debug']
+DEBUG = False
 
 ALLOWED_HOSTS = [
     ALLOWED_HOST,

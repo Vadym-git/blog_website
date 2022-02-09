@@ -155,27 +155,20 @@
                                         transition: all .3s;">
                                 {{ post.reg_date|date:"D d M Y" }}
                             </li>
-                            <li><a href="#">0 Comments</a></li>
+                            <!--                            <li><a href="#">0 Comments</a></li>-->
                         </ul>
                         <p>{{ post.text|safe|truncatechars:420 }}</p>
-<!--                        <div class="post-options">-->
-<!--                            <div class="row">-->
-<!--                                <div class="col-6">-->
-<!--                                    <ul class="post-tags">-->
-<!--                                        <li><i class="fa fa-tags"></i></li>-->
-<!--                                        <li><a href="#">Beauty</a>,</li>-->
-<!--                                        <li><a href="#">Nature</a></li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                                <div class="col-6">-->
-<!--                                    <ul class="post-share">-->
-<!--                                        <li><i class="fa fa-share-alt"></i></li>-->
-<!--                                        <li><a href="#">Facebook</a>,</li>-->
-<!--                                        <li><a href="#"> Twitter</a></li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <div class="post-options">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="fb-share-button" data-href="{% url 'post' post.id %}"
+                                         data-layout="button_count" data-size="small"><a target="_blank"
+                                                                                         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                                                                         class="fb-xfbml-parse-ignore">Share</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
